@@ -1,0 +1,33 @@
+{
+  "name": "doan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon --inspect src/index.js",
+    "watch": "node-sass -w src/resources/scss/ --output src/public/css/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anhtoan1103/MNCNPM.git"
+  },
+  "keywords": [
+    "hcmus",
+    "nodejs"
+  ],
+  "author": "anhtoan1103",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anhtoan1103/MNCNPM/issues"
+  },
+  "homepage": "https://github.com/anhtoan1103/MNCNPM#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "mongoose": "^5.10.15",
+    "morgan": "^1.10.0",
+    "node-sass": "^5.0.0",
+    "nodemon": "^2.0.6"
+  }
+}
