@@ -13,6 +13,8 @@ const route = require('./routes')
 // route 
 app.use(morgan('combined'));
 
+
+//app.use(express.static('src/public/img'));
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(express.urlencoded({
