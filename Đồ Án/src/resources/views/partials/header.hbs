@@ -4,12 +4,14 @@
       <img class="img-logo" style="margin:20px 30px" src="/img/logo.jpg" alt="logo" height="65" width="65">
       <a href="." class="homepage"
         style="font-weight: 500px; font-size: 49px;margin-left:12px; color: black; line-hight:0;font-style:normal">BookPhong.com</a>
+      <h3 id="user-name" style="color: white;"></h3>
     </div>
 
     <div class="nav-log form-inline  " style="left:100%">
       <button type="button" class="btn btn-light" style="margin-right:5px">Bạn muốn cho thuê phòng</button>
-      <button type="button" class="btn btn-light">Đăng nhập</button>
-      <button type="button" class="btn btn-light">Đăng kí</button>
+            <a id="btn-login" href="/login" button type="button" style="margin-right:5px" class="btn btn-light">Đăng nhập</a>
+            <a id="btn-register" href="/register" button type="button" class="btn btn-light">Đăng kí</a>
+            <a id="btn-logout" onclick="logout();" button type="button" style="margin-left:5px;" class="btn btn-light">Đăng xuất</a>
     </div>
   </div>
   
@@ -47,3 +49,33 @@
     </div>
   </nav>
 </head>
+<script>
+    //session
+    function saveSession(key, value) {
+        localStorage.setItem(key, value);
+    }
+
+    function clearSession() {
+        localStorage.clear();
+    }
+
+    function logout() {
+        clearSession();
+        manageButtons();
+        window.location.href = '/login';
+    }
+
+    function manageButtons() {
+        if(!localStorage.getItem('username')) {
+            document.getElementById('btn-login').style.display = "block";
+            document.getElementById('btn-register').style.display = "block";
+            document.getElementById('btn-logout').style.display = "none";
+        } else {
+            document.getElementById('user-name').innerHTML = localStorage.getItem('username');
+            document.getElementById('btn-login').style.display = "none";
+            document.getElementById('btn-register').style.display = "none";
+            document.getElementById('btn-logout').style.display = "block";
+        }
+    }
+    manageButtons();
+</script>
