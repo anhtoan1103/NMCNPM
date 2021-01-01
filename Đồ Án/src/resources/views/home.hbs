@@ -1,7 +1,11 @@
 
 <div class="mt-4">
     <div class="row">
-
+        <div class="col">
+            <input type="hidden" id="user-data" style="display:none;" value="{{user}}" />
+        </div>
+    </div>
+    <div class="row">
         {{#each tests}}
         <div class="col-sm-6 col-lg-4">
             <div class="card" style="width: 18rem;">
@@ -20,5 +24,11 @@
         {{/each}}
     </div>
 </div>
-
+<script>
+    let user = document.getElementById('user-data').value;
+    let username = user.split('name:')[1].split(',')[0].replace("'", '').replace("'", '') || ``;
+    document.getElementById('user-name').innerHTML = username;
+    saveSession('username', username);
+    manageButtons();
+</script>
 

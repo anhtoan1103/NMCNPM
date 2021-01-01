@@ -1,0 +1,49 @@
+<div class="row mt-5">
+  <div class="col-md-6 m-auto">
+    <div class="card card-body">
+      <h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i>Reset Password</h1>
+
+      <form action="/password/rp" method="POST">
+          <input
+                  type="hidden"
+                  id="token"
+                  name="token"
+          />
+          <div class="form-group">
+              <label for="password">Password mới</label>
+              <input
+                      required="required"
+                      type="password"
+                      id="password"
+                      name="password"
+                      class="form-control"
+                      placeholder="Nhập password"
+              />
+          </div>
+          <div class="form-group">
+              <label for="password">Nhập lại password mới</label>
+              <input
+                      required="required"
+                      type="password"
+                      id="password2"
+                      name="password2"
+                      class="form-control"
+                      placeholder="Nhập lại password mới"
+              />
+          </div>
+        <button type="submit" class="btn btn-primary btn-block">Reset Password</button>
+      </form>
+      {{message}}
+      <p class="lead mt-4">
+        Không có tài khoản? <a href="/register">Đăng kí</a>
+      </p>
+        <p class="lead mt-4">
+            Thử đăng nhập? <a href="/login">Đăng nhập</a>
+        </p>
+    </div>
+  </div>
+    <script>
+           const token = window.location.href.split('token=')[1];
+           document.getElementById('token').value = token;
+    </script>
+</div>
