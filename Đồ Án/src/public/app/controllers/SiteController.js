@@ -17,6 +17,10 @@ class SiteController {
     search(req, res) {
         res.render('search');
     }
+
+    dashboard(req, res) {
+        res.render('dashboard');
+    }
 }
 
 module.exports = new SiteController
