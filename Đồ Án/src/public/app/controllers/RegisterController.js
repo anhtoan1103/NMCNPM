@@ -1,5 +1,5 @@
 const Test = require('../models/test');
-const User = require('../models/user');
+const User = require('../models/user.js');
 const {multipleMongooseToObject} = require('../../app/util/mongoose');
 const validator = require('validator');
 

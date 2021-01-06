@@ -1,22 +1,36 @@
+<link rel="stylesheet" href="/css/app.css">
+
 <head>
   <div class="headtop navbar" style="display: flex;background-color:rgb(0,53,128);">
     <div class="nav-logo" style="margin: 0px 1px">
       <img class="img-logo" style="margin:20px 30px" src="/img/logo.jpg" alt="logo" height="65" width="65">
       <a href="/" class="homepage"
         style="font-weight: 500px; font-size: 49px;margin-left:12px; color: black; line-hight:0;font-style:normal">BookPhong.com</a>
-      <h3 id="user-name" style="color: white;"></h3>
     </div>
 
     <div class="nav-log form-inline  " style="left:100%">
       <button type="button" class="btn btn-light" style="margin-right:5px">Bạn muốn cho thuê phòng</button>
-            <a id="btn-login" href="/login" button type="button" style="margin-right:5px" class="btn btn-light">Đăng nhập</a>
-            <a id="btn-register" href="/register" button type="button" class="btn btn-light">Đăng kí</a>
-            <a id="btn-dashboard" href="/dashboard" button type="button" class="btn btn-light">Thông tin cá nhân</a>
-            <a id="btn-logout" onclick="logout();" button type="button" style="margin-left:5px;" class="btn btn-light">Đăng xuất</a>
-
+      <a id="btn-login" href="/login" button type="button" style="margin-right:5px" class="btn btn-light">Đăng nhập</a>
+      <a id="btn-register" href="/register" button type="button" class="btn btn-light">Đăng kí</a>
+      <div class="nav-item dropdown" style="margin-right: 80px;">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <h3 id="user-name" style="color: white;font-size:16px;min-width: 80px;content = none"></h3>
+        </a>
+        <div  class="dropdown-menu" aria-labelledby="navbarDropdown1">
+          <a class="dropdown-item" href="#">Dashboard của tôi</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Đặt phòng</a>
+          <a class="dropdown-item" href="#">Đánh giá</a>
+          <a class="dropdown-item" href="#">Dịch vụ khách hàng</a>
+          <a class="dropdown-item" href="#">Cài đặt</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item dropdown-item-left" onclick="logout();" >Đăng xuất</a>
+        </div>
+      </div>
     </div>
   </div>
-  
+
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding:12px">
     <a class="navbar-brand" href="#">Trang chủ</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -35,7 +49,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            Liên hệ 
+            Liên hệ
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#">Action</a>
@@ -49,37 +63,46 @@
         </li>
       </ul>
     </div>
+    
   </nav>
+
+  
+  <script>
+    window.onload = manageButtons();
+  </script>
 </head>
+
 <script>
-    //session
-    function saveSession(key, value) {
-        localStorage.setItem(key, value);
-    }
+  //session
+  function saveSession(key, value) {
+    localStorage.setItem(key, value);
+  }
 
-    function clearSession() {
-        localStorage.clear();
-    }
+  function clearSession() {
+    localStorage.clear();
+  }
 
-    function logout() {
-        clearSession();
-        manageButtons();
-        window.location.href = '/login';
-    }
+  function logout() {
+    clearSession();
+    //manageButtons();
+    window.location.href = '/';
+  }
 
-    function manageButtons() {
-        if(!localStorage.getItem('username')) {
-            document.getElementById('btn-login').style.display = "block";
-            document.getElementById('btn-register').style.display = "block";
-            document.getElementById('btn-dashboard').style.display = "none";
-            document.getElementById('btn-logout').style.display = "none";
-        } else {
-            document.getElementById('user-name').innerHTML = localStorage.getItem('username');
-            document.getElementById('btn-login').style.display = "none";
-            document.getElementById('btn-register').style.display = "none";
-            document.getElementById('btn-dashboard').style.display = "block";
-            document.getElementById('btn-logout').style.display = "block";
-        }
+  function manageButtons() {
+    if (!localStorage.getItem('username')) {
+      document.getElementById('btn-login').style.display = "block";
+      document.getElementById('btn-register').style.display = "block";
+      document.getElementsByClassName('a').style = "color: #003580"; 
+      document.getElementById('navbarDropdown1').className+= "disable"; 
+    } else {
+      document.getElementById('user-name').innerHTML = localStorage.getItem('username');
+      document.getElementById('btn-login').style.display = "none";
+      document.getElementById('btn-register').style.display = "none";
+      document.getElementById('btn-userName').style.display = "block";
+      document.getElementById('navbarDropdown1').style.display = "block";
+
     }
-    manageButtons();
+  }
+
+
 </script>
