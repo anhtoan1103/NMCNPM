@@ -2,6 +2,7 @@ const User = require('../models/user');
 const Test = require('../models/test');
 const {multipleMongooseToObject} = require('../../app/util/mongoose')
 const validator = require('validator');
+const storage = require('node-sessionstorage')
 
 class LoginController {
     index(req, res) {
@@ -22,7 +23,7 @@ class LoginController {
             email: req.body.email,
             password: req.body.password
         });
-
+        storage.setItem('email',req.body.email);
         let tests = await Test.find({});
         if(user.length === 1)
             return res.render('home', {
