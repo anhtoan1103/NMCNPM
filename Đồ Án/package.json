@@ -28,6 +28,7 @@
     "mongoose": "^5.10.15",
     "morgan": "^1.10.0",
     "node-sass": "^5.0.0",
+    "node-sessionstorage": "^1.0.0",
     "nodemailer": "^6.4.17",
     "nodemon": "^2.0.6",
     "uuidv4": "^6.2.6",
