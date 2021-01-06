@@ -4,6 +4,8 @@ const SiteRouter = require('./site')
 const LoginRouter = require('./login')
 const RegisterRouter = require('./register')
 const PasswordRouter = require('./password')
+const InvoiceP1Router = require('./invoiceP1')
+
 
 function route(app) {
     
@@ -13,11 +15,12 @@ function route(app) {
     app.use('/register', RegisterRouter);
     app.use('/hotel', HotelRouter);
     app.use('/password', PasswordRouter);
-
+    app.use('/invoiceP1', InvoiceP1Router);
+    
     app.use('/', SiteRouter);
-
-
-
+    
+    
 }
+
 
 module.exports = route;

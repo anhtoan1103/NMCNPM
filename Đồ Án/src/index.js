@@ -6,6 +6,8 @@ const app = express();
 const port = 3000;
 const db = require('./config/db');
 
+
+
 //connect db 
 db.connect();
 
@@ -27,10 +29,10 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 // Home, search, contact
 
+
+
 // Route init
 route(app);
-
-
 
 // Khởi tạo web server
 app.listen(port, () => {
