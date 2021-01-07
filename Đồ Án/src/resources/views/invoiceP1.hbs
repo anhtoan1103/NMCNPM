@@ -1,0 +1,29 @@
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Khách sạn</th>
+            <th scope="col">Phòng</th>
+            <th scope="col">Kỳ hạn</th>
+            <th scope="col">Ngày lập</th>
+        </tr>
+    </thead>
+    <tbody>
+            {{#each  invoices }}
+            {{#ifEquals P1 }}
+        <tr>
+            <th scope="row">3</th>
+            <td>{{this.Hotel}}</td>
+            <td>{{this.Room}}</td>
+            <td>{{this.Period}}</td>
+            <td>{{this.Date}}</td>
+        </tr>
+            {{/ifEquals}}
+            {{/each}}
+    </tbody>
+</table>
+<script>
+    
+</script>

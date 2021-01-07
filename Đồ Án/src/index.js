@@ -7,6 +7,8 @@ const port = 3000;
 const db = require('./config/db');
 const storage = require('node-sessionstorage')
 var hbs = require('handlebars');
+var cookieParser = require('cookie-parser')
+
 
 
 //connect db 
@@ -45,10 +47,9 @@ hbs.registerHelper("pageNumChange", function (index) {
 hbs.registerHelper("getSlug", function () {
   return storage.getItem("slug")
 });
-
-
-
-
+hbs.registerHelper('pageNum', function(arg1) {
+  return arg1<25 ;
+});
 // Route init
 route(app);
 // Khởi tạo web server

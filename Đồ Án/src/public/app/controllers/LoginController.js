@@ -23,7 +23,7 @@ class LoginController {
             email: req.body.email,
             password: req.body.password
         });
-        storage.setItem('email',req.body.email);
+        
         let tests = await Test.find({});
         if(user.length === 1)
             return res.render('home', {

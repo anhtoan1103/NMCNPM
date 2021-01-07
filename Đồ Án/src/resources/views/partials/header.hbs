@@ -68,7 +68,7 @@
 
   
   <script>
-    window.onload = manageButtons();
+   window.onload = manageButtons();
   </script>
 </head>
 
@@ -84,7 +84,7 @@
 
   function logout() {
     clearSession();
-    //manageButtons();
+    manageButtons();
     window.location.href = '/';
   }
 
@@ -103,6 +103,6 @@
 
     }
   }
-
+manageButtons();
 
 </script>
