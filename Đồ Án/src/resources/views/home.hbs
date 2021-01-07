@@ -1,6 +1,6 @@
-<style>
-
-</style>
+<script>
+    function 
+</script>
 
 <div class="mt-4" style="background-color: #003580;margin:0px !important;padding-top:24px">
     <div class="row">
@@ -31,6 +31,7 @@
                     padding:0px">VND {{this.price}}</p>
                     <p  style="color:blue;margin-top:2px;
                     padding:0px">{{this.location}}</p>
+            <p>{{{totalNumPage}}} hello</p>
                     
                     
                     <a href="#" class="btn btn-primary">Xem phòng</a>
@@ -51,7 +52,6 @@
             <li class="page-item"><a class="page-link" href="/page/{{@index}}">{{@index}}</a></li>
             {{/if}}
             {{/each}}
-
             <li class="page-item">
                 <a class="page-link" href="#">Trang cuối</a>
             </li>
@@ -59,9 +59,16 @@
     </nav>
 </div>
 <script>
+    //const storage = require('node-sessionstorage')
     let user = document.getElementById('user-data').value;
     let username = user.split('name:')[1].split(',')[0].replace("'", '').replace("'", '') || ``;
     document.getElementById('user-name').innerHTML = username;
     saveSession('username', username);
-    manageButtons();  
+    manageButtons();
+    let coll = new Object;
+    coll = db.collection('tests');
+    coll.count().then((count) => {
+        count
+    });
+    storage.setItem('column',20);
 </script>

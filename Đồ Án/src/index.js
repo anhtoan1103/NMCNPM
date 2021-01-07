@@ -48,7 +48,7 @@ hbs.registerHelper("getSlug", function () {
   return storage.getItem("slug")
 });
 hbs.registerHelper('pageNum', function(arg1) {
-  return arg1<25 ;
+  return arg1< storage.getItem('col') ;
 });
 // Route init
 route(app);

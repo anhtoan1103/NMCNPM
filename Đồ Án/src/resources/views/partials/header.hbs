@@ -22,6 +22,7 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Đặt phòng</a>
           <a class="dropdown-item" href="#">Đánh giá</a>
+          <a class="dropdown-item" href="/invoiceP1">Hóa đơn</a>
           <a class="dropdown-item" href="#">Dịch vụ khách hàng</a>
           <a class="dropdown-item" href="#">Cài đặt</a>
           <div class="dropdown-divider"></div>
@@ -85,7 +86,7 @@
     if (!localStorage.getItem('username')) {
       document.getElementById('btn-login').style.display = "block";
       document.getElementById('btn-register').style.display = "block";
-      document.getElementsByClassName('a').style = "color: #003580"; 
+      document.getElementsByClassName('a').style = "color: #003580;cursor:none !important"; 
       document.getElementById('navbarDropdown1').className+= "disable"; 
     } else {
       document.getElementById('user-name').innerHTML = localStorage.getItem('username');

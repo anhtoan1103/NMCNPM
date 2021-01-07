@@ -6,9 +6,13 @@ class SiteController {
 
     index(req, res, next) {
         storage.setItem('slug', req.params.slug);
+        storage.setItem('col', storage.getItem('column'));
+        
+        const totalNumPage = storage.getItem('column');
         Test.find({})
             .then(tests => res.render('home', {
                 tests: multipleMongooseToObject(tests),
+                totalNumPage
             }))
             .catch(next);
     }

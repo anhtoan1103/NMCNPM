@@ -38,6 +38,7 @@ router.post('/register', (req, res) => {
   } else {
     User.findOne({ email: email }).then(user => {
       if (user) {
+        alert("Password phải có ít nhất 6 kí tự")
         errors.push({ msg: 'Email này đã tồn tại' });
         res.render('register', {
           errors,
