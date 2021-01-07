@@ -9,8 +9,12 @@
         </div>
     </div>
     <div class="row">
+        <div class="col">
+            <input type="hidden" id="user-data" style="display:none;" value="{{user}}" />
+        </div>
+    </div>
+    <div class="row">
         {{#each tests}}
-        {{#if (pageNumChange @index )}}
         <div class="col-sm-6 col-lg-4">
             <div class="card" style="width: 18rem;min-height:650px;margin:20px auto;over-flow:hidden;white-space: wrap">
                 <a href="/hotel/{{this.slug}}">
@@ -38,7 +42,6 @@
             </div>
         </div>
         {{/if}}
-
         {{/each}}
     </div>
     <nav aria-label="Page navigation example" style="align-item:center #important;margin:0;padding:24px auto">
@@ -63,5 +66,7 @@
     let username = user.split('name:')[1].split(',')[0].replace("'", '').replace("'", '') || ``;
     document.getElementById('user-name').innerHTML = username;
     saveSession('username', username);
-    manageButtons();  
+
+    manageButtons();   
+
 </script>

@@ -1,4 +1,3 @@
-
 <script>
    function myFunction() {
         var user1 = localStorage.getItem("username");
@@ -7,9 +6,9 @@
         console.log(test)
         let str = '';
         for(let t of test){
-          console.log(t.P1)
+          console.log(t.P2)
           console.log(user1)
-          if(t.P1.trim() === user1.trim()) {
+          if(t.P2.trim() === user1.trim()) {
             console.log(t)
             str += '<tr> <td>'+t.Hotel+'</td> <td>'+t.Room+'</td> <td>'+t.Period+'</td> <td>'+t.Payments+'</td> <td>'+t.Date+'</td> </tr> ';
           }
@@ -34,21 +33,3 @@
     </tbody>
     </body>
 </table>
-
-    <tbody>
-            {{#each  invoices }}
-            {{#ifEquals P1 }}
-        <tr>
-            <th scope="row">3</th>
-            <td>{{this.Hotel}}</td>
-            <td>{{this.Room}}</td>
-            <td>{{this.Period}}</td>
-            <td>{{this.Date}}</td>
-        </tr>
-            {{/ifEquals}}
-            {{/each}}
-    </tbody>
-</table>
-<script>
-    
-</script>
