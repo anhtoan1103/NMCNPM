@@ -15,9 +15,9 @@ class LoginController {
 
     async login(req, res) {
         if(!req.body.email || !validator.isEmail(req.body.email))
-            return res.render('login', {message: 'Please enter a valid email address.'});
+            return res.render('login', {message: 'Vui lòng nhập chính xác email.'});
         if(!req.body.password || !req.body.password.length === 0)
-            return res.render('login', {message: 'Please enter a valid password.'});
+            return res.render('login', {message: 'Vui lòng nhập chính xác password.'});
 
         let user = await User.find({
             email: req.body.email,

@@ -15,17 +15,19 @@ class RegisterController {
     async register(req, res) {
 
         if(!req.body.email || !validator.isEmail(req.body.email))
-            return res.render('register', {message: 'Please enter a valid email address.'});
+            return res.render('register', {message: 'Vui lòng nhập chính xác email.'});
         if(!req.body.password || !req.body.password.length === 0)
-            return res.render('register', {message: 'Please enter a valid password.'});
+            return res.render('register', {message: 'Vui lòng nhập password.'});
         if(!req.body.name || !req.body.name.length === 0)
-            return res.render('register', {message: 'Please enter a valid name.'});
+            return res.render('register', {message: 'Vui lòng nhập tên.'});
+        if(req.body.password.length < 6)
+            return res.render('register', {message: 'Mật khẩu ít hơn 6 kí tự, xin vui lòng đặt mật khẩu dài hơn.'});
         if(req.body.password !== req.body.password2)
-            return res.render('register', {message: 'Password and Confirm Password must match.'});
+            return res.render('register', {message: 'Mật khẩu nhập lại không trùng khớp với mật khẩu của bạn.'});
 
         let alreadyRegistered = await User.findOne({email: req.body.email});
         if(alreadyRegistered)
-            return res.render('register', {message: 'User already registered with this email.'});
+            return res.render('register', {message: 'Đã có người sử dụng email này.'});
 
         let user = await new User({
             name: req.body.name,
