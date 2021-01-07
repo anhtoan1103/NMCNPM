@@ -1,5 +1,7 @@
 const Test = require('../models/test')
+const User = require('../models/user')
 const {multipleMongooseToObject} = require('../../app/util/mongoose')
+
 
 class SiteController {
     
@@ -18,8 +20,13 @@ class SiteController {
         res.render('search');
     }
 
-    dashboard(req, res) {
-        res.render('dashboard');
+    async dashboard(req, res, next) {
+        User.find({})
+            .then(users => res.render('user_info', {
+                 users :multipleMongooseToObject(users)
+                }))
+            .catch(next);
+       // res.render('dashboard');
     }
 }
 

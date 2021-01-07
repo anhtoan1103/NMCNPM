@@ -5,7 +5,7 @@ const siteController = require('../public/app/controllers/SiteController')
 
 // tuyến đường '/ phải luôn nằm ở dưới cùng '
 router.get('/search', siteController.search);
-router.get('/dashboard', siteController.dashboard);
+router.get('/user_info', siteController.dashboard);
 router.get('/', siteController.index);
 
 module.exports = router;

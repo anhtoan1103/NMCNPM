@@ -5,6 +5,13 @@ const morgan = require('morgan');
 const app = express();
 const port = 3000;
 const db = require('./config/db');
+var hbs = require('handlebars');
+
+
+hbs.registerHelper('json', function (content) {
+  return JSON.stringify(content);
+});
+
 
 //connect db 
 db.connect();
@@ -29,6 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 // Route init
 route(app);
+
 
 
 

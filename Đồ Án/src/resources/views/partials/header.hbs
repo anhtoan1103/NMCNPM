@@ -11,7 +11,8 @@
       <button type="button" class="btn btn-light" style="margin-right:5px">Bạn muốn cho thuê phòng</button>
             <a id="btn-login" href="/login" button type="button" style="margin-right:5px" class="btn btn-light">Đăng nhập</a>
             <a id="btn-register" href="/register" button type="button" class="btn btn-light">Đăng kí</a>
-            <a id="btn-dashboard" href="/dashboard" button type="button" class="btn btn-light">Thông tin cá nhân</a>
+            <a id="btn-user_info" href="/user_info" button type="button" class="btn btn-light">Trang cá nhân</a>
+            
             <a id="btn-logout" onclick="logout();" button type="button" style="margin-left:5px;" class="btn btn-light">Đăng xuất</a>
 
     </div>
@@ -54,6 +55,7 @@
 <script>
     //session
     function saveSession(key, value) {
+      console.log(value)
         localStorage.setItem(key, value);
     }
 
@@ -68,16 +70,20 @@
     }
 
     function manageButtons() {
+        
         if(!localStorage.getItem('username')) {
             document.getElementById('btn-login').style.display = "block";
             document.getElementById('btn-register').style.display = "block";
-            document.getElementById('btn-dashboard').style.display = "none";
+            document.getElementById('btn-user_info').style.display = "none";
+            
             document.getElementById('btn-logout').style.display = "none";
-        } else {
+        } 
+        else {
             document.getElementById('user-name').innerHTML = localStorage.getItem('username');
             document.getElementById('btn-login').style.display = "none";
             document.getElementById('btn-register').style.display = "none";
-            document.getElementById('btn-dashboard').style.display = "block";
+            document.getElementById('btn-user_info').style.display = "block";
+           
             document.getElementById('btn-logout').style.display = "block";
         }
     }

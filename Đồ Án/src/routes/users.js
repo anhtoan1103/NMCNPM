@@ -3,6 +3,7 @@ const express = require('express');
 // Load User model
 const User = require('.public/app/models/user');
 const { forwardAuthenticated } = require('../config/auth');
+const router = require('./news');
 
 // Login Page
 router.get('/login', forwardAuthenticated, (req, res) => res.render('login'));
