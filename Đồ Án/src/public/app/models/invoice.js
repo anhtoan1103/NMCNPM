@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const invoice = new Schema({
     P1: { type: String },
+    P2: { type: String },
     Period: { type: String }
 
   });

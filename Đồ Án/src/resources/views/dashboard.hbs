@@ -1,35 +1,43 @@
-<div class="row mt-5">
-	<div class="col-md-7 m-auto">
-		<h1 class="text-left">Account Settings</h1>
-			<div class="card-group">
-			  	<div class="card card-body">
-					<h4 class="card-title">Personal details</h4>
-				  	<p class="card-text">Update your info and find out how it's used.</p>
-					<a href="/" class="btn btn-primary">Manage personal details</a>
+<script>
+   function myFunction() {
+        var user1 = localStorage.getItem("username");
+        var foo = "{{users}}";
+        var test = {{{json users}}};
+        console.log(test)
+        for(let t of test){
+          console.log(t.name)
+          console.log(user1)
+          if(t.name.trim() === user1.trim()) {
+            console.log(t)
+            document.getElementById("email").innerHTML = t.email;
+            document.getElementById("name").innerHTML = t.name;
+            document.getElementById("password").innerHTML = t.password;
+          }
+        }
+   }
 
-			  	</div>
-			  	<div class="card card-body">
-				  	<h4 class="card-title">Preferences</h4>
-				  	<p class="card-text">Change your language, currency and accessibility requirements.</p>
-					<a href="/" class="btn btn-primary">Manage preferences</a>
-			  	</div>
-			  	<div class="card card-body">
-				  	<h4 class="card-title">Security</h4>
-				  	<p class="card-text">Adjust your security settings and set up two-factor authentication.</p>
-					<a href="/" class="btn btn-primary">Manage account security</a>
-			  	</div>
-			</div>
-		<div class="card-group">
-			  	<div class="card card-body">
-					<h4 class="card-title">Payment details</h4>
-				  	<p class="card-text">Securely add or remove payment methods to make it easier when you book.</p>
-					<a href="/" class="btn btn-primary">Manage payment details</a>
-			  	</div>
-			  	<div class="card card-body">
-				  		<h4 class="card-title">Email notifications</h4>
-				  		<p class="card-text">Decide what you want to be notified about and unsubscribe from what you don't.</p>
-						<a href="/" class="btn btn-primary">Manage notifications</a>
-			  	</div>
-			</div>
-	</div>
+      </script>
+<body onload="myFunction()">
+<div class="row mt-5">
+  <div class="col-md-6 m-auto">
+    <div class="card card-body">
+      <h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i>Trang cá nhân</h1>
+      <h1><span id="myText"></span></h1>
+
+        <div class="form-group">
+             <label for="name">Email</label>
+             <h3 id='email'></h3>
+            </div>
+            <div class="form-group">
+             <label for="name">Name</label>
+
+             <h3 id='name'>  </h3>
+            </div>
+            <div class="form-group">
+             <label for="password">Password</label>
+            <h3 id='password'> </h3>
+            </div>
+    </div>
+  </div>
 </div>
+</body>
