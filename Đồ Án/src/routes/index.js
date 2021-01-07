@@ -6,6 +6,7 @@ const RegisterRouter = require('./register')
 const PasswordRouter = require('./password')
 const AdminRouter = require('./admin')
 const Admin_pageRouter = require('./admin_page')
+const InvoiceP1Router = require('./invoiceP1')
 
 function route(app) {
     
@@ -17,10 +18,12 @@ function route(app) {
     app.use('/password', PasswordRouter);
     app.use('/admin', AdminRouter);
     app.use('/admin_page', Admin_pageRouter);
+    app.use('/invoiceP1', InvoiceP1Router);
+    
     app.use('/', SiteRouter);
-
-
-
+    
+    
 }
+
 
 module.exports = route;
