@@ -7,7 +7,7 @@ const port = 3000;
 const db = require('./config/db');
 const storage = require('node-sessionstorage')
 var hbs = require('handlebars');
-
+var cookieParser = require('cookie-parser')
 
 
 
@@ -47,16 +47,20 @@ hbs.registerHelper("pageNumChange", function (index) {
 hbs.registerHelper("getSlug", function () {
   return storage.getItem("slug")
 });
+
 hbs.registerHelper('json', function (content) {
   return JSON.stringify(content);
 });
 hbs.registerHelper('ifEquals', function (arg1, arg2, options) {
     return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
 });
-
-
 // Route init
 route(app);
+
+=======
+hbs.registerHelper('pageNum', function(arg1) {
+  return arg1<25 ;
+});
 
 // Route init
 route(app);

@@ -2,7 +2,6 @@ const User = require('../models/user')
 const Test = require('../models/test')
 const storage = require('node-sessionstorage')
 const { multipleMongooseToObject } = require('../../app/util/mongoose')
-const { mongooseToObject } = require('../../app/util/mongoose')
 
 class SiteController {
 

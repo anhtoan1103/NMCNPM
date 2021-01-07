@@ -1,4 +1,13 @@
-<div class="mt-4">
+<style>
+
+</style>
+
+<div class="mt-4" style="background-color: #003580;margin:0px !important;padding-top:24px">
+    <div class="row">
+        <div class="col">
+            <input type="hidden" id="user-data" style="display:none;" value="{{user}}" />
+        </div>
+    </div>
     <div class="row">
         <div class="col">
             <input type="hidden" id="user-data" style="display:none;" value="{{user}}" />
@@ -7,26 +16,57 @@
     <div class="row">
         {{#each tests}}
         <div class="col-sm-6 col-lg-4">
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 18rem;min-height:650px;margin:20px auto;over-flow:hidden;white-space: wrap">
                 <a href="/hotel/{{this.slug}}">
                     <img src="{{this.image}}" class="card-img-top" alt="...">
                 </a>
-                <div class="card-body">
+                <div class="card-body" style="background-color: rgb(136, 123, 123);">
                     <a href="/hotel/{{this.slug}}">
-                        <h5 class="card-title">{{this.name}}</h5>
+                        <h5 class="card-title" style="white-space: wrap">{{this.name}}</h5>
                     </a>
-                    <p class="card-text">{{this.description}}</p>
-                    <a href="#" class="btn btn-primary"></a>
+                    <div class="card-text-div" style="overflow:hidden;max-height:140px;margin-bottom:12px;display: -webkit-box;
+-webkit-line-clamp: 4;
+-webkit-box-orient: vertical;;">
+                        <p class="card-text ">{{this.description}}</p>
+                    </div>
+                    <p class="card-text ">Giá mỗi đêm rẻ nhất từ</p>
+                    
+                    <p style="color:red;margin-top:2px;
+                    padding:0px">VND {{this.price}}</p>
+                    <p  style="color:blue;margin-top:2px;
+                    padding:0px">{{this.location}}</p>
+                    
+                    
+                    <a href="#" class="btn btn-primary">Xem phòng</a>
                 </div>
             </div>
         </div>
+        {{/if}}
         {{/each}}
     </div>
+    <nav aria-label="Page navigation example" style="align-item:center #important;margin:0;padding:24px auto">
+        <ul class="pagination" style="align-item:center #important;margin:0;padding:50px 90px">
+            <li class="page-item ">
+                <a class="page-link" href="#" tabindex="-1">Previous</a>
+            </li>
+            {{#each tests}}
+            {{#if (pageNum @index)}}
+            <li class="page-item"><a class="page-link" href="/page/{{@index}}">{{@index}}</a></li>
+            {{/if}}
+            {{/each}}
+
+            <li class="page-item">
+                <a class="page-link" href="#">Trang cuối</a>
+            </li>
+        </ul>
+    </nav>
 </div>
 <script>
     let user = document.getElementById('user-data').value;
     let username = user.split('name:')[1].split(',')[0].replace("'", '').replace("'", '') || ``;
     document.getElementById('user-name').innerHTML = username;
     saveSession('username', username);
+
     manageButtons();   
+
 </script>

@@ -2,6 +2,7 @@ const User = require('../models/user');
 const Test = require('../models/test');
 const {multipleMongooseToObject} = require('../../app/util/mongoose')
 const validator = require('validator');
+const storage = require('node-sessionstorage')
 
 class LoginController {
     index(req, res) {
@@ -14,14 +15,15 @@ class LoginController {
 
     async login(req, res) {
         if(!req.body.email || !validator.isEmail(req.body.email))
-            return res.render('login', {message: 'Please enter a valid email address.'});
+            return res.render('login', {message: 'Vui lòng nhập chính xác email.'});
         if(!req.body.password || !req.body.password.length === 0)
-            return res.render('login', {message: 'Please enter a valid password.'});
+            return res.render('login', {message: 'Vui lòng nhập chính xác password.'});
 
         let user = await User.find({
             email: req.body.email,
             password: req.body.password
         });
+        
         let tests = await Test.find({});
         if(user.length === 1)
             return res.render('home', {

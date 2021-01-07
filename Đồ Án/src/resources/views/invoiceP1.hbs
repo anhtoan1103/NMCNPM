@@ -1,3 +1,4 @@
+
 <script>
    function myFunction() {
         var user1 = localStorage.getItem("username");
@@ -33,3 +34,21 @@
     </tbody>
     </body>
 </table>
+
+    <tbody>
+            {{#each  invoices }}
+            {{#ifEquals P1 }}
+        <tr>
+            <th scope="row">3</th>
+            <td>{{this.Hotel}}</td>
+            <td>{{this.Room}}</td>
+            <td>{{this.Period}}</td>
+            <td>{{this.Date}}</td>
+        </tr>
+            {{/ifEquals}}
+            {{/each}}
+    </tbody>
+</table>
+<script>
+    
+</script>
