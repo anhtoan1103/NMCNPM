@@ -1,3 +1,4 @@
+const User = require('../models/user')
 const Test = require('../models/test')
 const storage = require('node-sessionstorage')
 const { multipleMongooseToObject } = require('../../app/util/mongoose')
@@ -20,8 +21,13 @@ class SiteController {
         res.render('search');
     }
 
-    dashboard(req, res) {
-        res.render('dashboard');
+    async dashboard(req, res, next) {
+        User.find({})
+            .then(users => res.render('dashboard', {
+                 users :multipleMongooseToObject(users)
+                }))
+            .catch(next);
+       // res.render('dashboard');
     }
 }
 

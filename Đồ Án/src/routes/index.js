@@ -5,7 +5,7 @@ const LoginRouter = require('./login')
 const RegisterRouter = require('./register')
 const PasswordRouter = require('./password')
 const InvoiceP1Router = require('./invoiceP1')
-
+const InvoiceP2Router = require('./invoiceP2')
 
 function route(app) {
     
@@ -16,7 +16,7 @@ function route(app) {
     app.use('/hotel', HotelRouter);
     app.use('/password', PasswordRouter);
     app.use('/invoiceP1', InvoiceP1Router);
-    
+    app.use('/invoiceP2', InvoiceP2Router);
     app.use('/', SiteRouter);
     
     

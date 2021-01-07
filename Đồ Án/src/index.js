@@ -47,9 +47,19 @@ hbs.registerHelper("pageNumChange", function (index) {
 hbs.registerHelper("getSlug", function () {
   return storage.getItem("slug")
 });
-hbs.registerHelper('pageNum', function(arg1) {
-  return arg1< storage.getItem('col') ;
+
+hbs.registerHelper('json', function (content) {
+  return JSON.stringify(content);
 });
+hbs.registerHelper('ifEquals', function (arg1, arg2, options) {
+    return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+});
+
+
+hbs.registerHelper('pageNum', function(arg1) {
+  return arg1< 25 ;
+});
+
 // Route init
 route(app);
 // Khởi tạo web server
