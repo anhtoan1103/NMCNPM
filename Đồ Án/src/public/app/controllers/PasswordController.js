@@ -15,11 +15,13 @@ class PasswordController {
     async resetPassword(req, res) {
 
         if(!req.body.token || req.body.token.length !== 36)
-        return res.render('rp', {message: 'Invalid token provided.'});
-    if(!req.body.password || !req.body.password.length === 0)
-        return res.render('rp', {message: 'Please enter a valid password.'});
-    if(req.body.password !== req.body.password2)
-        return res.render('rp', {message: 'Password and Repeat Password must match.'});
+            return res.render('rp', {message: 'Token được nhận không chính xác.'});
+        if(!req.body.password || !req.body.password.length === 0)
+            return res.render('rp', {message: 'Vui lòng nhập mật khẩu.'});
+        if(req.body.password.length < 6)
+            return res.render('rp', {message: 'Mật khẩu không được ít hơn 6 kí tự.'});
+        if(req.body.password !== req.body.password2)
+            return res.render('rp', {message: 'Mật khẩu nhập lại không trùng với mật khẩu của bạn.'});
 
         await User.findOneAndUpdate({tempPassword: req.body.token}, {
             password: req.body.password
@@ -32,7 +34,7 @@ class PasswordController {
 
     async sendEmail(req, res) {
         if(!req.body.email || !validator.isEmail(req.body.email))
-        return res.render('fp', {message: 'Please enter a valid email address.'});
+        return res.render('fp', {message: 'Vui lòng nhập email có tồn tại trong hệ thống.'});
         let tempPassword = uuid();
         await User.findOneAndUpdate({email: req.body.email}, {
             tempPassword: tempPassword
