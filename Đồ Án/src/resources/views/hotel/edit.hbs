@@ -1,0 +1,31 @@
+<div class="mt-4">
+    <div class="row mt-5">
+        <div class="col-md-6 m-auto">
+            <div class="card card-body">
+                <h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i> Sửa khách sạn</h1>
+                <form action="/hotel/{{hotel._id}}?_method=PUT" method="POST">
+                    <div class="form-group">
+                        <label for="name">Tên khách sạn</label>
+                        <input type="text" class="form-control" name="name" id="name" value="{{hotel.name}}" placeholder="Khách sạn ">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Vị trí</label>
+                        <input type="text" class="form-control" name="location" id="location" value="{{hotel.location}}" placeholder="Tỉnh">
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Giá phòng</label>
+                        <input type="text" class="form-control" name="price" id="price" value="{{hotel.price}}" placeholder="VND">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Mô tả</label>
+                        <textarea class="form-control" name="description" id="description" placeholder="Mô tả">{{hotel.description}}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Thêm hình ảnh</label>
+                        <input type="file" class="form-control-file" id="image" value="{{hotel.image}}" name = "image">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sửa</button>
+                </form>
+            </div>
+        </div>
+    </div>

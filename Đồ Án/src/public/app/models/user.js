@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+const slug = require('mongoose-slug-generator')
+
+mongoose.plugin(slug);
 
 const UserSchema = new mongoose.Schema({
   name: {
@@ -21,6 +24,8 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   }
+},{
+  timestamps: true,
 });
 
 const User = mongoose.model('User', UserSchema);

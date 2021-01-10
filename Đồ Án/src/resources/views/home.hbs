@@ -1,7 +1,3 @@
-<script>
-    function 
-</script>
-
 <div class="mt-4" style="background-color: #003580;margin:0px !important;padding-top:24px">
     <div class="row">
         <div class="col">
@@ -9,12 +5,13 @@
         </div>
     </div>
     <div class="row">
-        {{#each tests}}
+        {{#each hotels}}
         {{#if (pageNumChange @index)}}
         <div class="col-sm-6 col-lg-4">
             <div class="card" style="width: 18rem;min-height:650px;margin:20px auto;over-flow:hidden;white-space: wrap">
                 <a href="/hotel/{{this.slug}}">
-                    <img src="{{this.image}}" class="card-img-top" alt="...">
+                    <img srcset="{{this.image}}, https://cf.bstatic.com/xdata/images/hotel/square200/40510723.jpg?k=7c44ca8624b5270d9f865324aef8ebb5d1345f8bf468d5f0a455d55736b63153&o=
+" class="card-img-top" alt="">
                 </a>
                 <div class="card-body" style="background-color: rgb(136, 123, 123);">
                     <a href="/hotel/{{this.slug}}">
@@ -27,49 +24,34 @@
                     </div>
                     <p class="card-text ">Giá mỗi đêm rẻ nhất từ</p>
                     
-                    <p style="color:red;margin-top:2px;
+                    <p style="color:red;margin-top:2px !important;
                     padding:0px">VND {{this.price}}</p>
                     <p  style="color:blue;margin-top:2px;
-                    padding:0px">{{this.location}}</p>
-            <p>{{{totalNumPage}}} hello</p>
-                    
-                    
-                    <a href="#" class="btn btn-primary">Xem phòng</a>
+                    padding:0px">{{this.location}}</p>                                
+                    <a href="/hotel/{{this.slug}}" class="btn btn-primary">Xem phòng</a>
                 </div>
             </div>
         </div>
         {{/if}}
         {{/each}}
     </div>
-    <nav aria-label="Page navigation example" style="align-item:center #important;margin:0;padding:24px auto">
-        <ul class="pagination" style="align-item:center #important;margin:0;padding:50px 90px">
-            <li class="page-item ">
-                <a class="page-link" href="#" tabindex="-1">Previous</a>
-            </li>
-            {{#each tests}}
-            {{#if (pageNum @index)}}
+    <nav aria-label="Page navigation example " style="align-item:center ;margin:0;padding:0px auto">
+        <ul class="pagination" style="align-item:center #important;margin:0;padding:50px 10px">
+            {{#each hotels}}
+            {{#if (pageNum @index numDocs)}}
             <li class="page-item"><a class="page-link" href="/page/{{@index}}">{{@index}}</a></li>
             {{/if}}
             {{/each}}
             <li class="page-item">
-                <a class="page-link" href="#">Trang cuối</a>
+                <a class="page-link" href="/page/{{lastPage}}">Trang cuối</a>
             </li>
         </ul>
     </nav>
 </div>
 <script>
-    //const storage = require('node-sessionstorage')
     let user = document.getElementById('user-data').value;
     let username = user.split('name:')[1].split(',')[0].replace("'", '').replace("'", '') || ``;
     document.getElementById('user-name').innerHTML = username;
     saveSession('username', username);
-
     manageButtons();
-    let coll = new Object;
-    coll = db.collection('tests');
-    coll.count().then((count) => {
-        count
-    });
-    storage.setItem('column',20);
-
 </script>

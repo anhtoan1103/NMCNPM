@@ -1,4 +1,4 @@
-const Test = require('../models/test');
+const Hotel = require('../models/hotel');
 const User = require('../models/user.js');
 const {multipleMongooseToObject} = require('../../app/util/mongoose');
 const validator = require('validator');
@@ -35,11 +35,11 @@ class RegisterController {
             password: req.body.password
         }).save();
 
-        let tests = await Test.find({});
+        let hotels = await Hotel.find({});
         if(user)
             res.render('home', {
                 user: user,
-                tests: multipleMongooseToObject(tests)
+                hotels: multipleMongooseToObject(hotels)
             });
         else {
             res.render('register', {message: 'Không thể đăng kí, vui lòng thử lại sau.'});

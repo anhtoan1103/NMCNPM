@@ -1,21 +1,22 @@
 const User = require('../models/user')
-const Test = require('../models/test')
+const Hotel = require('../models/hotel')
 const storage = require('node-sessionstorage')
 const { multipleMongooseToObject } = require('../../app/util/mongoose')
 
 class SiteController {
 
     index(req, res, next) {
-        storage.setItem('slug', req.params.slug);
-        storage.setItem('col', storage.getItem('column'));
-        
-        const totalNumPage = storage.getItem('column');
-        Test.find({})
-            .then(tests => res.render('home', {
-                tests: multipleMongooseToObject(tests),
-                totalNumPage
-            }))
-            .catch(next);
+        Promise.all([Hotel.find({}),Hotel.countDocuments()])
+            .then(function([hotels,numDocs]) {
+                storage.setItem('numDocs', numDocs);
+                return res.render('home', {
+                
+                    numDocs,
+                    hotels: multipleMongooseToObject(hotels)
+                })
+            }
+            )
+        storage.setItem('slug', req.params.slug);          
     }
     search(req, res) {
         res.render('search');
@@ -27,7 +28,6 @@ class SiteController {
                  users :multipleMongooseToObject(users)
                 }))
             .catch(next);
-       // res.render('dashboard');
     }
 }
 

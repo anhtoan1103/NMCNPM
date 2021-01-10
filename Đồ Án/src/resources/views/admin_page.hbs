@@ -1,10 +1,8 @@
-
-
 <div class="row mt-5">
   <div class="col-md-6 m-auto">
     <div class="card card-body">
      <h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i>Trang thông tin tài khoản</h1>
-        
+       
          {{#each users}}
         <div class="form-group">
              <label for="email">Email</label>
@@ -19,7 +17,7 @@
              <label for="password">Password</label>
             <h5> {{this.password}} </h5>
             </div>
-            <a href="/admin_page/{{this._id}}">delete</a>
+            <a href="/admin_page/delete/{{this._id}}" onclick="return confirm(Are your sure?)" class="btn btn-primary btn-sm">Delete</a>
             <hr>
          {{/each}}
     

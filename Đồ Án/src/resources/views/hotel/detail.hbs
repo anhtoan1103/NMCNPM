@@ -1,0 +1,35 @@
+<div class="mt-4" style="margin:auto 350px auto 250px">
+    <div class="row">
+        <div class="detail_page-image col-lg-4">
+            <img src="https://cf.bstatic.com/xdata/images/hotel/square200/183188000.jpg?k=5841b14e45023845e16b4b029e0a9d0b2b5ddfeabf69edcb52de01e806648e9d&o=
+" alt="">
+        </div>
+        <div class="detail_page-content col-lg-8">
+            <form method="POST" action="/hotel/storeInvoice">
+                <div class="form-group">
+                    <label for="username">Nhập username của bạn</label>
+                    <input type="text" class="form-control" name="username" id="username"
+                        placeholder="Username của bạn ">
+                </div>
+                <h3>{{hotel.name}}</h3>
+                <div class="form-group">
+                    <label for="hotel_name">Xác nhận tên khách sạn </label>
+                    <input type="text" class="form-control" name="hotel_name" id="hotel_name"
+                        placeholder=" ">
+                </div>
+                <h3 class="hotel-description">Mô tả: {{hotel.description}}</h3>
+                <h3 class="hotel-price">Giá/người: {{hotel.price}}đ</h3>
+                <h3 class="hotel-star">Đánh giá: {{hotel.star}} sao</h3>
+                <h3 class="hotel-price">Số phòng tổng cộng: {{hotel.numberofrooms}}</h3>
+                <h3 class="hotel-price">Số phòng còn: {{hotel.available}}</h3>
+                <div class="form-group">
+                    <label for="roomNums">Nhập số phòng</label>
+                    <input type="text" class="form-control" name="roomNums" id="roomNums"
+                        >
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+        </div>
+    </div>
+</div>

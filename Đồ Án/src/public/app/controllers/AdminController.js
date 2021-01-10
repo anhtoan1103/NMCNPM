@@ -1,5 +1,4 @@
 const Admin = require('../models/admin');
-//const Test = require('../models/test');
 const User = require('../models/user');
 const {multipleMongooseToObject} = require('../../app/util/mongoose')
 const validator = require('validator');

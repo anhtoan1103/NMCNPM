@@ -1,0 +1,83 @@
+<div class="mt-4">
+  <h3>Khách sạn của tôi</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Tên khách sạn</th>
+        <th scope="col">Vị trí</th>
+        <th scope="col">Giá </th>
+        <th scope="col">Mô tả </th>
+        <th scope="col">Thời gian tạo</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each hotels}}
+      <tr>
+        <th scope="row">{{Sum 1 @index}}</th>
+        <td>{{this.name}}</td>
+        <td>{{this.location}}</td>
+        <td>{{this.price}}</td>
+        <td>{{this.description}}</td>
+        <td>{{this.createdAt}}</td>
+        <td>
+          <a href="/hotel/{{this._id}}/edit" class="btn btn-link">Sửa</a>
+        </td>
+        <td>
+          <a href="" data-toggle="modal" data-id="{{this._id}}" data-target="#delete_course"
+            class="btn btn-link">Xóa</a>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+
+{{!--Confirm delete--}}
+<div id="delete_course" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Xóa khách sạn?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Bạn chắc chắn muốn xóa khách sạn này?</p>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-delete" type="button" class="btn btn-danger">Xóa</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Hủy</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!--Delete form--}}
+<form name="delete-hotel-form" method="POST"></form>
+
+<script>
+  // when dialog confirm clicked
+  document.addEventListener('DOMContentLoaded', function () {
+    var hotelId;
+    var deleteForm = document.forms['delete-hotel-form'];
+    var btnDelete = document.getElementById('btn-delete');
+
+    $('#delete_course').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget);
+      hotelId = button.data('id');
+
+    });
+
+
+
+    console.log(btnDelete);
+    btnDelete.onclick = function () {
+      deleteForm.action = '/hotel/' + hotelId + '?_method=DELETE';
+      deleteForm.submit();
+    }
+  });
+</script>

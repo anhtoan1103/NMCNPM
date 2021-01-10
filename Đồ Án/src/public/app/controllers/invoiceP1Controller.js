@@ -15,5 +15,4 @@ class invoiceP1Controller {
     }
 }
 
-
 module.exports = new invoiceP1Controller
