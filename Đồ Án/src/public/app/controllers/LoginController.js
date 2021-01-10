@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Host = require('../models/host');
 const Hotel = require('../models/hotel');
 const {multipleMongooseToObject} = require('../../app/util/mongoose')
 const validator = require('validator');
@@ -23,13 +24,23 @@ class LoginController {
             email: req.body.email,
             password: req.body.password
         });
-        
+
+        let host = await Host.find({
+            email: req.body.email,
+            password: req.body.password
+        });
+
         let hotels = await Hotel.find({});
         if(user.length === 1)
             return res.render('home', {
                 user: user,
                 hotels: multipleMongooseToObject(hotels)
             });
+        else if (host.length === 1)
+        return res.render('home', {
+            user: host,
+            hotels: multipleMongooseToObject(hotels)
+        });
         else {
             return res.render('login', {message: 'Không thể tìm thấy user nào dưới thông tin này.'});
         }

@@ -16,7 +16,8 @@ class SiteController {
                 })
             }
             )
-        storage.setItem('slug', req.params.slug);          
+        storage.setItem('slug', req.params.slug);
+          
     }
     search(req, res) {
         res.render('search');
@@ -26,6 +27,11 @@ class SiteController {
         User.find({})
             .then(users => res.render('dashboard', {
                  users :multipleMongooseToObject(users)
+                }))
+            .catch(next);
+            Host.find({})
+            .then(hosts => res.render('dashboard', {
+                 users :multipleMongooseToObject(hosts)
                 }))
             .catch(next);
     }

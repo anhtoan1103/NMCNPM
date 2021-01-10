@@ -1,5 +1,5 @@
 const User = require('../models/user')
-const {multipleMongooseToObject} = require('../../app/util/mongoose')
+const {multipleMongooseToObject, mongooseToObject} = require('../../app/util/mongoose')
 
 class Admin_pageController {
     
@@ -38,6 +38,22 @@ class Admin_pageController {
             res.status(500).send(error);
         }
     }
+
+    update(req, res, next) {
+        User.updateOne({_id:req.params.id}, req.body)
+            .then(() => res.redirect('/admin_page'))
+            .catch(next)
+    }
+
+    edit(req, res, next) {
+        User.findById(req.params.id)
+            .then(user =>res.render("admin_page_edit",{
+                user:mongooseToObject(user)
+            }))
+            
+            .catch(next);
+        }
+        
    
 }
 
