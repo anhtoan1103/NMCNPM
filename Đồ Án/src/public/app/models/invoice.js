@@ -1,10 +1,28 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
-const invoice = new Schema({
-    P1: { type: String },
-    Period: { type: String }
+const ngchothueSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  tempPassword: {
+    type: String,
+    required: false
+  },
+  date: {
+    type: Date,
+    default: Date.now
+  }
+});
 
-  });
+const ngchothue = mongoose.model('ngchothue', ngchothueSchema);
 
-  module.exports = mongoose.model('invoice', invoice);
+module.exports = ngchothue;

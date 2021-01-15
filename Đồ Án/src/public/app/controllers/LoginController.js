@@ -1,4 +1,5 @@
-const User = require('../models/user');
+const User = require('../models/ngthue');
+const Lease = require('../models/ngchothue')
 const Test = require('../models/test');
 const {multipleMongooseToObject} = require('../../app/util/mongoose')
 const validator = require('validator');
@@ -23,6 +24,11 @@ class LoginController {
             email: req.body.email,
             password: req.body.password
         });
+
+        let lease = await Lease.find({
+            email: req.body.email,
+            password: req.body.password
+        });
         
         let tests = await Test.find({});
         if(user.length === 1)
@@ -30,9 +36,15 @@ class LoginController {
                 user: user,
                 tests: multipleMongooseToObject(tests)
             });
+        else if (lease.length === 1) 
+            return res.render('home', {
+                user: lease,
+                tests: multipleMongooseToObject(tests)
+            })
         else {
             return res.render('login', {message: 'Không thể tìm thấy user nào dưới thông tin này.'});
         }
+        
     }
 }
 

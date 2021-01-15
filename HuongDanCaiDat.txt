@@ -1,0 +1,18 @@
+Cài đặt Nodejs tại đây: https://nodejs.org/en/
+Cài đặt MongoDB Compass cho cơ sở dữ liệu tại đây: https://www.mongodb.com/try/download/compass
+Tạo một database tên 'Hotel-Apps', trong đó có các collection như admins, evaluations, hosts, hotels, invoices, users
+Import database mẫu admins.csv -> admins, DanhGia.csv -> evaluations, hotels.csv -> hotels, ngchothue.csv -> hosts, ngthue -> users, Invoice.csv -> invoices
+Ở terminal của Visual Studio Code nhập các dòng sau để cài đặt các thư viện project sử dụng
+npm install express : Framework đơn giản, nhẹ cho Nodejs
+npm install express-handlebars : Thêm nhiều chức năng View cho Express, partial cho web giúp ta có thể code header footer riêng biệt với body
+npm install validator : Dùng để kiểm tra nhập chính xác vào các form
+npm install method-override : Cho bạn sử dụng PUT hay DELETE trong những chỗ client không hỗ trợ 
+npm install morgan : Tạo một morgan logger, trả về req là request, res là respond
+npm install mongoose : Thư viện sử dụng MongoDB
+npm install mongoose-slug-generator: Plugin MongoDB tạo slug cho bất kì field nào
+npm install cookie-parser : Tương tác với Cookie trình duyệt
+npm install node-sass : Ngôn ngữ stylesheet phổ biến viết bằng C đưa vào Nodejs
+npm install node-sessionstorage : Lưu session đăng nhập website
+npm install nodemailer : Chức năng gửi email cho người dùng
+npm install uuidv4 : Chuỗi định dạng thông tin
+Sau khi cài đặt hoàn tất, ta có thể cài extension Code Runner trong Visual Studio Code để chạy file src/index.js để chạy trang web

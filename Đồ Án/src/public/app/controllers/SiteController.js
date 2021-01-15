@@ -1,5 +1,6 @@
 const Test = require('../models/test')
-const User = require('../models/user')
+const User = require('../models/ngthue')
+const Lease = require('../models/ngchothue')
 const {multipleMongooseToObject} = require('../../app/util/mongoose')
 const storage = require('node-sessionstorage')
 
@@ -19,12 +20,18 @@ class SiteController {
 
     async user_info(req, res, next) {
         User.find({})
-            .then(users => res.render('user_info', {
-                 users :multipleMongooseToObject(users)
+            .then(ngthues => res.render('user_info', {
+                 ngthues :multipleMongooseToObject(ngthues)
+                }))
+            .catch(next);
+        Lease.find({})
+            .then(ngchothues => res.render('user_info', {
+                ngthues :multipleMongooseToObject(ngchothues)
                 }))
             .catch(next);
        // res.render('dashboard');
     }
+
     dashboard(req, res) {
         res.render('dashboard');
     }

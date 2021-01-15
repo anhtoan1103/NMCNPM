@@ -1,6 +1,6 @@
 const Admin = require('../models/admin');
 //const Test = require('../models/test');
-const User = require('../models/user');
+const User = require('../models/ngthue');
 const {multipleMongooseToObject} = require('../../app/util/mongoose')
 const validator = require('validator');
 
@@ -23,11 +23,11 @@ class AdminController {
             email: req.body.email,
             password: req.body.password
         });
-        let users = await User.find({});
+        let ngthues = await User.find({});
         if(admin.length === 1)
         return res.render('admin_page', {
             admin: admin,
-            users: multipleMongooseToObject(users)
+            ngthues: multipleMongooseToObject(ngthues)
         });
         else {
             return res.render('admin', {message: 'Không thể tìm thấy user nào dưới thông tin này.'});
